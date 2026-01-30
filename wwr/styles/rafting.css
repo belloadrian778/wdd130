@@ -8,7 +8,7 @@
 }
 
 header {
-    background-color: var(--primary-color);
+    background-color: var(--accent1-color);
     color: var(--accent2-color);
 }
 
@@ -30,15 +30,14 @@ footer {
     margin: left;
 }
 
-h1,
-h2 {
+h2,
+h3 {
     font-family: var(--heading-font);
     color: var(--primary-color);
 }
 
 nav,
 p,
-section,
 article {
     margin: 16px;
     padding: 8px;
@@ -58,7 +57,7 @@ article {
     height: auto;
 }
 
-h1 {
+h2 {
     position: absolute;
     top: 20px;
     width: 100%;
@@ -85,15 +84,15 @@ article {
     width: 135px;
 }
 
-section {}
+section {
+    position: left
+}
 
-h2 {
-    position: left;
+h3 {
     margin: 0;
     width: 840px;
     padding: 16px;
     text-align: center;
-    opacity: 1;
     background-color: var(--accent1-color);
     color: #ffffff
 }
