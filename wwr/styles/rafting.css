@@ -7,7 +7,7 @@
 
 header {
     background-color: var(--primary-color);
-    color: var(--accent2-color);
+    color: var(--accent1-color);
 }
 
 * {
@@ -24,8 +24,9 @@ body {
 header,
 main,
 footer {
-    width: 840px;
-    margin: 0;
+    max-width: 840px;
+    width: 90%;
+    margin: 0 auto;
 }
 
 h2,
