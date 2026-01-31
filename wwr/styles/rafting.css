@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #112025;
+    --primary-color: #2c5d2c;
     --accent1-color: #264653;
     --heading-font: "Times New Roman", "Georgia", serif;
     --body-font: Arial, Helvetica, sans-serif;
@@ -8,6 +8,7 @@
 header {
     background-color: var(--primary-color);
     color: var(--accent1-color);
+
 }
 
 * {
