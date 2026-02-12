@@ -94,3 +94,20 @@ h2 {
     background-color: var(--accent1-color);
     color: #ffffff;
 }
+
+.adventure-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.adventure-gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.adventure-gallery figure {
+    margin: 0;
+    text-align: center;
+}
