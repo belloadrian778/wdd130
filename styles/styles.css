@@ -1,99 +1,214 @@
+:root {
+    --max-width: 840px;
+    --brand-blue: #032a66;
+    --muted-bg: #e6e6e6;
+    --text-color: #111;
+    --radius: 6px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #fff;
+    padding: 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 header,
 footer {
-    max-width: 840px;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 
-body {
-    font-size: 16px;
-    font-family: Roboto, Arial, sans-serif;
+header {
+    margin-bottom: 1rem;
 }
 
 nav {
-    background-color: darkblue;
-    padding: 1rem;
+    background-color: var(--brand-blue);
+    padding: 0.5rem;
+}
+
+nav ul {
+    list-style: none;
     display: flex;
-    justify-content: space-evenly;
+    gap: 0.6rem;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
 }
 
 nav a {
-    color: white;
-    padding: 0.5rem;
-    display: block;
+    color: #fff;
     text-decoration: none;
-    font-size: 1.2rem;
+    padding: 0.45rem 0.7rem;
     font-weight: 700;
+    font-size: 1.05rem;
+    border-radius: 4px;
+}
+
+nav a:hover,
+nav a:focus {
+    background: rgba(255, 255, 255, 0.06);
+    outline: 3px solid rgba(255, 255, 255, 0.12);
+    outline-offset: 3px;
 }
 
 h1 {
-    color: darkblue;
-    padding: .5rem;
+    color: var(--brand-blue);
+    margin: 0.6rem auto;
+    max-width: var(--max-width);
+    font-size: 1.6rem;
+    padding-left: 0.5rem;
 }
 
 .grid {
     display: grid;
-    align-items: center;
+    grid-template-columns: 1fr 280px;
+    gap: 1rem;
+    max-width: var(--max-width);
+    margin: 0.6rem auto;
+    align-items: start;
+    padding: 0 0.5rem;
+    flex: 1;
 }
 
 main {
-    grid-column: 2/3;
-    margin: 1rem;
+    padding: 0.5rem;
 }
 
 main img {
-    width: 105px;
+    width: 150px;
+    max-width: 35%;
     height: auto;
-    border: 1px solid black;
-    padding: 2px;
-    box-shadow: 0 0 30px gray;
     float: right;
     margin: 0 0 1rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    padding: 2px;
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
 }
 
 p {
-    margin: 1rem;
+    margin: 0.75rem 0;
 }
 
 aside {
-    width: 20rem;
     position: relative;
-    grid-column: 1/2;
-    grid-row: 1/2;
+    padding: 0.5rem;
 }
 
 aside img {
     width: 200px;
     height: auto;
+    display: block;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
 }
 
 aside h2 {
     position: absolute;
-    top: 19px;
-    left: 80px;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 1rem;
+    white-space: nowrap;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 
-footer {
-    margin-top: 1em;
-    border-top: 1px solid #000;
-    text-align: center;
-}
-
-/*Class Selectors */
 .box {
     margin: 1rem;
-    border: 1px solid rgb(0 0 0 / 10%);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     padding: 1rem;
-    background-color: #ddd;
-    color: #000;
+    background-color: var(--muted-bg);
+    color: var(--text-color);
+    border-radius: var(--radius);
 }
 
 .indent {
-    padding-left: 2rem;
+    padding-left: 1.25rem;
+}
+
+footer {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    text-align: center;
+    padding: 0.7rem 0;
+    font-size: 0.95rem;
+}
+
+a:focus {
+    outline: 3px solid rgba(3, 42, 102, 0.12);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+@media (max-width: 800px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    main img {
+        float: none;
+        display: block;
+        width: 160px;
+        max-width: 40%;
+        margin: 0 auto 1rem auto;
+    }
+
+    aside h2 {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        background: transparent;
+        padding: 0;
+        margin-bottom: 0.25rem;
+        text-align: left;
+        box-shadow: none;
+        white-space: normal;
+    }
+
+    aside img {
+        max-width: 100%;
+    }
+
+    nav ul {
+        gap: 0.4rem;
+        padding: 0.25rem 0.25rem;
+    }
+}
+
+@media (max-width: 420px) {
+    body {
+        font-size: 15px;
+    }
+
+    main img {
+        width: 120px;
+        max-width: 45%;
+    }
+
+    nav a {
+        font-size: 0.95rem;
+        padding: 0.35rem 0.5rem;
+    }
 }
