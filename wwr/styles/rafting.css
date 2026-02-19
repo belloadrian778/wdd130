@@ -63,39 +63,52 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO (FIXED) ================= */
 .hero {
     position: relative;
+    overflow: hidden;
+    background-color: var(--primary-color);
 }
 
 .hero img {
     width: 100%;
-    height: auto;
+    height: 420px;
+    object-fit: cover;
     display: block;
 }
 
 .hero h1 {
     position: absolute;
-    top: 20px;
-    width: 100%;
-    padding: 16px;
+    top: 12px;
+    left: 0;
+    right: 0;
+    padding: 14px;
     text-align: center;
-    background-color: rgb(38 70 83 / 70%);
+    background: linear-gradient(to bottom, rgba(38, 70, 83, .9), rgba(38, 70, 83, .6));
     color: #ffffff;
+    z-index: 3;
 }
 
 .hero article {
     position: absolute;
-    bottom: 20px;
-    width: 95%;
+    bottom: 0;
+    left: 0;
+    right: 0;
     padding: 16px;
-    background-color: rgb(38 70 83 / 70%);
+    background-color: rgba(38, 70, 83, 0.85);
     color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    z-index: 4;
 }
 
 .hero article img {
-    float: right;
-    width: 135px;
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
     margin-left: 1rem;
 }
 
@@ -120,28 +133,64 @@ h3 {
     line-height: 1.6;
 }
 
-/* ================= ADVENTURES ================= */
+/* ================= GALLERY (FIXED RESPONSIVE) ================= */
 .adventure-gallery {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
     margin: 1rem 0;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 700px) {
+    .adventure-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1100px) {
+    .adventure-gallery {
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
 
 .adventure-gallery figure {
     margin: 0;
     text-align: center;
+    overflow: hidden;
 }
 
 .adventure-gallery img {
     width: 100%;
-    height: auto;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
     display: block;
 }
 
 .adventure-gallery figcaption {
     padding: 0.5rem;
     font-size: 0.9rem;
+}
+
+/* ================= NEWSLETTER FORM ================= */
+.newsletter-form {
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.newsletter-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.newsletter-form input {
+    width: 100%;
+    padding: 6px;
+    margin-top: 4px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
 }
 
 /* ================= FOOTER ================= */
@@ -161,17 +210,12 @@ footer p {
     gap: 0.75rem;
 }
 
-.socialmedia a {
-    text-decoration: none;
-}
-
 .socialmedia img {
     width: 32px;
     height: 32px;
 }
 
 /* ================= CONTACT PAGE ================= */
-
 .contact-grid {
     display: grid;
     gap: 2rem;
@@ -200,7 +244,6 @@ footer p {
     margin-top: 1rem;
 }
 
-/* Form styling */
 .contact-form label {
     display: block;
     margin-top: 1rem;
@@ -216,14 +259,12 @@ footer p {
     border-radius: 6px;
 }
 
-/* Radios + checkbox fix */
 .contact-form input[type="radio"],
 .contact-form input[type="checkbox"] {
     width: auto;
     margin-right: 0.5rem;
 }
 
-/* Fieldset */
 .contact-form fieldset {
     margin-top: 1rem;
     padding: 1rem;
@@ -231,12 +272,6 @@ footer p {
     border-radius: 6px;
 }
 
-.contact-form fieldset label {
-    font-weight: 400;
-    margin-top: 0.5rem;
-}
-
-/* Checkbox row */
 .contact-form label.checkbox {
     display: flex;
     align-items: center;
@@ -245,7 +280,7 @@ footer p {
     font-weight: 400;
 }
 
-/* Button */
+/* ================= BUTTON ================= */
 .btn {
     margin-top: 1rem;
     padding: 0.8rem 1rem;
@@ -262,11 +297,6 @@ footer p {
 }
 
 /* ================= EMPLOYEES ================= */
-
-.employees {
-    margin: 2rem 1rem 1rem;
-}
-
 .employee-grid {
     display: grid;
     gap: 1rem;
@@ -282,11 +312,5 @@ footer p {
 .employee-grid img {
     width: 100%;
     height: auto;
-    display: block;
     border-radius: 8px;
-}
-
-.employee-grid figcaption {
-    margin-top: 0.5rem;
-    font-style: italic;
 }
