@@ -1,63 +1,73 @@
-<!-- 29  January  2026 -->
+<!-- 29 January 2026 -->
 <!DOCTYPE html>
 <html lang="en-US">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrian Bello | WDD 130 </title>
+    <title>Adrian Bello | WDD 130</title>
     <meta name="description" content="Adrian Bello | BYU Pathway | WDD 130 | Term 1 2026.">
     <meta name="author" content="Adrian Bello">
+    <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 
 <body>
     <header>
-        <nav>
-            <a href="#">Home</a>
-            <a href="wwr/">Rafting Website</a>
-            <a href="wwr/site-plan-rafting.html">Siteplan</a>
-            <a href="http://linkedin.com">Profile</a>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="wwr/">Rafting Website</a></li>
+                <li><a href="wwr/site-plan-rafting.html">Siteplan</a></li>
+                <li><a href="https://linkedin.com" target="_blank" rel="noopener">Profile</a></li>
+            </ul>
         </nav>
     </header>
+
     <div class="grid">
-        <main>
+        <main id="main-content">
             <h1>Adrian Bello | WDD 130</h1>
+
             <img src="images/profile.jpg" alt="Portrait of Adrian Bello" width="200">
-            <p>Hello! My name is Adrian Bello and I am from Brazil. I moved to USA 10 years ago and
-                I
-                live in the
-                Boston area. I like to do sports; I go to the gym almost every day and in summer I
-                run
-                and go
-                mountain biking. I love to eat foods from different countries, like Brazilian,
-                Mexican
-                and Chinese.
-                I am studying Software Development, and I am really motivated to get my degree and
-                start
-                working. </p>
-            <ul class="box indent">
-                <li><a href="https://www.churchofjesuschrist.org/temples/details/philadelphia-pennsylvania-temple"
-                      target="_blank">Philadelphia Pennsylvania Temple</a></li>
-                <li><a href="https://www.churchofjesuschrist.org/temples/details/paris-france-temple"
-                      target="_blank">Paris France Temple</a></li>
-                <li><a href="https://www.churchofjesuschrist.org/temples/details/lima-peru-los-olivos-temple"
-                      target="_blank">Lima Peru Temple</a></li>
-            </ul>
+
+            <p>
+                Hello! My name is <strong>Adrian Bello</strong> and I am from Brazil. I moved to the
+                USA about 10 years ago and currently live in the Boston area. I like to do sports; I
+                go to the gym almost every day and in summer I run and go mountain biking. I love to
+                eat foods from different countries, like Brazilian, Mexican and Chinese. I am
+                studying Software Development, and I am really motivated to get my degree and start
+                working.
+            </p>
+
+            <section>
+                <h2>Favorite Temples</h2>
+                <ul class="box indent">
+                    <li>
+                        <a href="https://www.churchofjesuschrist.org/temples/details/philadelphia-pennsylvania-temple"
+                          target="_blank" rel="noopener">Philadelphia Pennsylvania Temple</a>
+                    </li>
+                    <li>
+                        <a href="https://www.churchofjesuschrist.org/temples/details/paris-france-temple"
+                          target="_blank" rel="noopener">Paris France Temple</a>
+                    </li>
+                    <li>
+                        <a href="https://www.churchofjesuschrist.org/temples/details/lima-peru-los-olivos-temple"
+                          target="_blank" rel="noopener">Lima Peru Temple</a>
+                    </li>
+                </ul>
+            </section>
         </main>
-        <aside class="box">
+
+        <aside class="box" role="complementary">
             <h2>Curitiba, Brazil</h2>
-            <img src="images/curitiba.jpg" alt="Aerial view of Curitiba, Brazil">
-            <p> Curitiba is the capital of Paraná in southern Brazil and is known for its modern
-                urban
-                planning,
-                efficient public transportation, and strong focus on sustainability. The city has a
-                mild
-                climate,
-                many green spaces, and a diverse cultural background influenced by European
-                immigration,
-                making it a
-                well-organized and high-quality place to live.</p>
+            <img src="images/curitiba.jpg" alt="Aerial view of Curitiba, Brazil" width="200">
+            <p>
+                Curitiba is the capital of Paraná in southern Brazil and is known for its modern
+                urban planning, efficient public transportation, and strong focus on sustainability.
+                The city has a mild climate, many green spaces, and a diverse cultural background
+                influenced by European immigration, making it a well-organized and high-quality
+                place to live.
+            </p>
         </aside>
     </div>
 
