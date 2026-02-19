@@ -5,20 +5,26 @@
     --body-font: Arial, Helvetica, sans-serif;
 }
 
-/* ================= RESET ================= */
+/* ========== RESET ========== */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0
 }
 
-/* ================= BODY ================= */
+/* ========== BASE ========== */
+html,
+body {
+    height: 100%
+}
+
 body {
     font-family: var(--body-font);
     color: var(--accent1-color);
+    background: var(--primary-color);
 }
 
-/* ================= LAYOUT WIDTH ================= */
+/* center site wrapper for header/main/footer */
 header,
 main,
 footer {
@@ -27,81 +33,93 @@ footer {
     margin: 0 auto;
 }
 
-/* ================= HEADER ================= */
+/* ========== HEADER ========== */
 header {
-    background-color: var(--primary-color);
     display: grid;
     grid-template-columns: 200px 1fr;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
+    padding: 1rem 0;
+    background: var(--primary-color);
 }
 
+/* ensure logo doesn't blow up */
 header img {
     width: 100%;
     height: auto;
     display: block;
+    max-width: 200px;
 }
 
-/* ================= NAVIGATION ================= */
+/* navigation aligned to right */
 nav ul {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
     gap: 1rem;
     list-style: none;
+    align-items: center;
 }
 
 nav a {
     text-decoration: none;
     color: var(--accent1-color);
-    padding: 0.5rem 0.75rem;
-    font-weight: bold;
+    padding: 0.4rem 0.6rem;
+    font-weight: 700;
+    font-size: 0.95rem;
 }
 
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* ================= HERO (FIXED) ================= */
+/* ========== HERO ========== */
 .hero {
     position: relative;
     overflow: hidden;
     background-color: var(--primary-color);
+    margin-top: 0.75rem;
 }
 
+/* fixed visible area so hero cannot push page huge */
 .hero img {
     width: 100%;
     height: 420px;
+    /* adjust if you want taller/shorter */
     object-fit: cover;
     display: block;
+    background-color: var(--primary-color);
 }
 
+/* title band */
 .hero h1 {
     position: absolute;
     top: 12px;
     left: 0;
     right: 0;
-    padding: 14px;
+    padding: 12px 16px;
     text-align: center;
     background: linear-gradient(to bottom, rgba(38, 70, 83, .9), rgba(38, 70, 83, .6));
-    color: #ffffff;
+    color: #fff;
     z-index: 3;
 }
 
+/* bottom overlay: flex so text + image align nicely */
 .hero article {
     position: absolute;
-    bottom: 0;
     left: 0;
     right: 0;
-    padding: 16px;
-    background-color: rgba(38, 70, 83, 0.85);
-    color: #ffffff;
+    bottom: 0;
+    padding: 14px;
+    background: rgba(38, 70, 83, .85);
+    color: #fff;
     display: flex;
-    flex-wrap: wrap;
     gap: 12px;
     align-items: center;
+    justify-content: space-between;
     z-index: 4;
+}
+
+/* text portion grows, image sits on right */
+.hero article p {
+    flex: 1;
+    margin: 0;
+    line-height: 1.4
 }
 
 .hero article img {
@@ -109,31 +127,50 @@ nav a:hover {
     height: 90px;
     object-fit: cover;
     border-radius: 6px;
-    margin-left: 1rem;
+    flex-shrink: 0;
 }
 
-/* ================= HEADINGS ================= */
+/* stack on very small screens */
+@media (max-width:600px) {
+    .hero img {
+        height: 260px
+    }
+
+    .hero article {
+        flex-direction: column;
+        align-items: flex-start
+    }
+
+    .hero article img {
+        width: 100px;
+        height: 75px;
+        margin-top: 8px
+    }
+}
+
+/* ========== HEADINGS ========== */
 h2,
 h3 {
     font-family: var(--heading-font);
-    color: #ffffff;
-    background-color: var(--accent1-color);
+    color: #fff;
+    background: var(--accent1-color);
     padding: 1rem;
     text-align: center;
     margin: 1rem 0;
 }
 
-/* ================= HISTORY ================= */
+/* ========== HISTORY ========== */
 .history {
-    margin: 1rem 0;
+    margin: 1rem 0
 }
 
 .history p {
     padding: 1rem;
-    line-height: 1.6;
+    line-height: 1.6
 }
 
-/* ================= GALLERY (FIXED RESPONSIVE) ================= */
+/* ========== ADVENTURE / FEATURES GALLERY ========== */
+/* default 1 col */
 .adventure-gallery {
     display: grid;
     gap: 1rem;
@@ -141,38 +178,49 @@ h3 {
     grid-template-columns: repeat(1, 1fr);
 }
 
-@media (min-width: 700px) {
+/* tablet: 3 columns */
+@media (min-width:700px) {
     .adventure-gallery {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr)
     }
 }
 
-@media (min-width: 1100px) {
+/* wide: 5 columns */
+@media (min-width:1100px) {
     .adventure-gallery {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(5, 1fr)
     }
 }
 
+/* normalize figures */
 .adventure-gallery figure {
     margin: 0;
     text-align: center;
     overflow: hidden;
 }
 
+/* force thumbnails same height, crop cleanly */
 .adventure-gallery img {
     width: 100%;
     height: 140px;
+    /* change to 160/180 if you want taller thumbs */
     object-fit: cover;
     border-radius: 6px;
     display: block;
 }
 
+/* caption */
 .adventure-gallery figcaption {
-    padding: 0.5rem;
+    padding-top: 0.4rem;
     font-size: 0.9rem;
+    color: var(--accent1-color);
 }
 
-/* ================= NEWSLETTER FORM ================= */
+/* ========== NEWSLETTER ========== */
+.newsletter-section {
+    margin: 1.25rem 0
+}
+
 .newsletter-form {
     max-width: 420px;
     margin: 0 auto;
@@ -182,7 +230,7 @@ h3 {
 .newsletter-form label {
     display: block;
     margin-top: 10px;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .newsletter-form input {
@@ -191,42 +239,76 @@ h3 {
     margin-top: 4px;
     border-radius: 6px;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
-/* ================= FOOTER ================= */
+/* ========== QUICK GALLERY CTA ========== */
+.gallery-cta {
+    text-align: center;
+    margin-top: .75rem
+}
+
+/* ========== FOOTER ========== */
+/* layout: keep footer items aligned horizontally on desktop but stack on small screens */
 footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 0 3rem 0;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-footer p {
-    margin: 0;
-}
-
+/* social icons container */
 .socialmedia {
     display: flex;
     gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
+/* force social icon sizes so they are never huge */
 .socialmedia img {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    /* desired icon size */
+    height: 36px;
+    display: inline-block;
+    object-fit: contain;
+    border-radius: 6px;
 }
 
-/* ================= CONTACT PAGE ================= */
+/* make sure footer copyright is readable and wraps */
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--accent1-color)
+}
+
+/* center footer content on narrow screens */
+@media (max-width:600px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center
+    }
+
+    footer p {
+        margin-bottom: 0.5rem
+    }
+}
+
+/* ========== CONTACT PAGE ========== */
 .contact-grid {
     display: grid;
     gap: 2rem;
     grid-template-columns: 1fr;
-    margin: 1rem 0;
+    margin: 1rem 0
 }
 
-@media (min-width: 700px) {
+@media(min-width:700px) {
     .contact-grid {
         grid-template-columns: 1fr 1fr;
-        align-items: start;
+        align-items: start
     }
 }
 
@@ -234,83 +316,76 @@ footer p {
 .contact-form {
     padding: 1rem;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 8px
 }
 
 .map iframe {
     width: 100%;
     border: none;
     border-radius: 8px;
-    margin-top: 1rem;
+    margin-top: 1rem
 }
 
 .contact-form label {
     display: block;
     margin-top: 1rem;
-    font-weight: 600;
+    font-weight: 600
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 0.6rem;
-    margin-top: 0.4rem;
+    padding: .6rem;
+    margin-top: .4rem;
     border: 1px solid #ccc;
     border-radius: 6px;
+    box-sizing: border-box
 }
 
 .contact-form input[type="radio"],
 .contact-form input[type="checkbox"] {
     width: auto;
-    margin-right: 0.5rem;
+    margin-right: .5rem
 }
 
 .contact-form fieldset {
     margin-top: 1rem;
     padding: 1rem;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 6px
 }
 
-.contact-form label.checkbox {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-top: 1rem;
-    font-weight: 400;
-}
-
-/* ================= BUTTON ================= */
+/* ========== BUTTONS ========== */
 .btn {
     margin-top: 1rem;
-    padding: 0.8rem 1rem;
+    padding: .8rem 1rem;
     cursor: pointer;
     border: none;
     border-radius: 8px;
-    background-color: var(--accent1-color);
-    color: #ffffff;
+    background: var(--accent1-color);
+    color: #fff;
     font-weight: 700;
 }
 
 .btn:hover {
-    opacity: 0.9;
+    opacity: .92
 }
 
-/* ================= EMPLOYEES ================= */
+/* ========== EMPLOYEES GRID ========== */
 .employee-grid {
     display: grid;
     gap: 1rem;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr
 }
 
-@media (min-width: 700px) {
+@media(min-width:700px) {
     .employee-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr)
     }
 }
 
 .employee-grid img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 8px
 }
