@@ -3,32 +3,34 @@
     --accent1-color: #264653;
     --heading-font: "Times New Roman", Georgia, serif;
     --body-font: Arial, Helvetica, sans-serif;
+    --content-width: 1400px;
 }
 
 /* ========== RESET ========== */
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0
+    padding: 0;
 }
 
 /* ========== BASE ========== */
 html,
 body {
-    height: 100%
+    height: 100%;
 }
 
 body {
     font-family: var(--body-font);
     color: var(--accent1-color);
     background: var(--primary-color);
+    line-height: 1.45;
 }
 
 /* center site wrapper for header/main/footer */
 header,
 main,
 footer {
-    max-width: 840px;
+    max-width: var(--content-width);
     width: 90%;
     margin: 0 auto;
 }
@@ -43,15 +45,14 @@ header {
     background: var(--primary-color);
 }
 
-/* ensure logo doesn't blow up */
 header img {
     width: 100%;
+    max-width: 200px;
     height: auto;
     display: block;
-    max-width: 200px;
 }
 
-/* navigation aligned to right */
+/* nav */
 nav ul {
     display: flex;
     justify-content: flex-end;
@@ -68,25 +69,27 @@ nav a {
     font-size: 0.95rem;
 }
 
-/* ========== HERO ========== */
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ========== HERO (fixed + overlay) ========== */
 .hero {
     position: relative;
     overflow: hidden;
-    background-color: var(--primary-color);
     margin-top: 0.75rem;
+    background-color: var(--primary-color);
 }
 
-/* fixed visible area so hero cannot push page huge */
 .hero img {
     width: 100%;
     height: 420px;
-    /* adjust if you want taller/shorter */
+    /* desktop visible height — change to 360/480 to taste */
     object-fit: cover;
     display: block;
     background-color: var(--primary-color);
 }
 
-/* title band */
 .hero h1 {
     position: absolute;
     top: 12px;
@@ -99,7 +102,7 @@ nav a {
     z-index: 3;
 }
 
-/* bottom overlay: flex so text + image align nicely */
+/* bottom overlay card - flex so image sits on the right */
 .hero article {
     position: absolute;
     left: 0;
@@ -115,11 +118,10 @@ nav a {
     z-index: 4;
 }
 
-/* text portion grows, image sits on right */
 .hero article p {
-    flex: 1;
+    flex: 1 1 240px;
     margin: 0;
-    line-height: 1.4
+    line-height: 1.4;
 }
 
 .hero article img {
@@ -130,21 +132,21 @@ nav a {
     flex-shrink: 0;
 }
 
-/* stack on very small screens */
-@media (max-width:600px) {
+/* hero responsive */
+@media (max-width: 600px) {
     .hero img {
-        height: 260px
+        height: 260px;
     }
 
     .hero article {
         flex-direction: column;
-        align-items: flex-start
+        align-items: flex-start;
     }
 
     .hero article img {
         width: 100px;
         height: 75px;
-        margin-top: 8px
+        margin-top: 8px;
     }
 }
 
@@ -159,18 +161,23 @@ h3 {
     margin: 1rem 0;
 }
 
+/* section spacing */
+section {
+    margin-bottom: 32px;
+}
+
 /* ========== HISTORY ========== */
 .history {
-    margin: 1rem 0
+    margin: 1rem 0;
 }
 
 .history p {
     padding: 1rem;
-    line-height: 1.6
+    line-height: 1.6;
 }
 
-/* ========== ADVENTURE / FEATURES GALLERY ========== */
-/* default 1 col */
+/* ========== ADVENTURE / FEATURE GALLERY ========== */
+/* default: 1 column on tiny screens */
 .adventure-gallery {
     display: grid;
     gap: 1rem;
@@ -179,37 +186,34 @@ h3 {
 }
 
 /* tablet: 3 columns */
-@media (min-width:700px) {
+@media (min-width: 700px) {
     .adventure-gallery {
-        grid-template-columns: repeat(3, 1fr)
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 /* wide: 5 columns */
-@media (min-width:1100px) {
+@media (min-width: 1100px) {
     .adventure-gallery {
-        grid-template-columns: repeat(5, 1fr)
+        grid-template-columns: repeat(5, 1fr);
     }
 }
 
-/* normalize figures */
 .adventure-gallery figure {
     margin: 0;
     text-align: center;
     overflow: hidden;
 }
 
-/* force thumbnails same height, crop cleanly */
 .adventure-gallery img {
     width: 100%;
     height: 140px;
-    /* change to 160/180 if you want taller thumbs */
+    /* thumbnail visual height — change to 160/180 if you prefer taller */
     object-fit: cover;
     border-radius: 6px;
     display: block;
 }
 
-/* caption */
 .adventure-gallery figcaption {
     padding-top: 0.4rem;
     font-size: 0.9rem;
@@ -218,7 +222,7 @@ h3 {
 
 /* ========== NEWSLETTER ========== */
 .newsletter-section {
-    margin: 1.25rem 0
+    margin: 1.25rem 0;
 }
 
 .newsletter-form {
@@ -230,7 +234,7 @@ h3 {
 .newsletter-form label {
     display: block;
     margin-top: 10px;
-    font-weight: 600
+    font-weight: 600;
 }
 
 .newsletter-form input {
@@ -242,14 +246,65 @@ h3 {
     box-sizing: border-box;
 }
 
-/* ========== QUICK GALLERY CTA ========== */
-.gallery-cta {
-    text-align: center;
-    margin-top: .75rem
+.newsletter-form .btn {
+    display: inline-block;
+    margin-top: 12px;
 }
 
-/* ========== FOOTER ========== */
-/* layout: keep footer items aligned horizontally on desktop but stack on small screens */
+/* ========== TRIPS PAGE: CARDS + TABLE ========== */
+.trip-details {
+    margin-top: 2rem;
+}
+
+.trip-card {
+    background: #f8fafb;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-left: 6px solid var(--accent1-color);
+    border-radius: 6px;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* trips table */
+.trips-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.trips-table th,
+.trips-table td {
+    padding: 10px;
+    border: 1px solid #d5d5d5;
+    text-align: center;
+}
+
+.trips-table thead {
+    background-color: var(--accent1-color);
+    color: white;
+}
+
+.trips-table tbody tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+@media (max-width: 600px) {
+    .trips-table table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* ========== CALL TO ACTION ========== */
+.call-to-action {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+/* ========== FOOTER & SOCIAL ICONS ========== */
 footer {
     display: flex;
     justify-content: space-between;
@@ -259,7 +314,12 @@ footer {
     flex-wrap: wrap;
 }
 
-/* social icons container */
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--accent1-color);
+}
+
 .socialmedia {
     display: flex;
     gap: 0.75rem;
@@ -267,33 +327,25 @@ footer {
     flex-wrap: wrap;
 }
 
-/* force social icon sizes so they are never huge */
+/* keep social icons small and consistent */
 .socialmedia img {
     width: 36px;
-    /* desired icon size */
     height: 36px;
     display: inline-block;
     object-fit: contain;
     border-radius: 6px;
 }
 
-/* make sure footer copyright is readable and wraps */
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: var(--accent1-color)
-}
-
-/* center footer content on narrow screens */
-@media (max-width:600px) {
+/* mobile footer layout */
+@media (max-width: 600px) {
     footer {
         flex-direction: column;
         align-items: center;
-        text-align: center
+        text-align: center;
     }
 
     footer p {
-        margin-bottom: 0.5rem
+        margin-bottom: 0.5rem;
     }
 }
 
@@ -302,13 +354,13 @@ footer p {
     display: grid;
     gap: 2rem;
     grid-template-columns: 1fr;
-    margin: 1rem 0
+    margin: 1rem 0;
 }
 
-@media(min-width:700px) {
+@media (min-width: 700px) {
     .contact-grid {
         grid-template-columns: 1fr 1fr;
-        align-items: start
+        align-items: start;
     }
 }
 
@@ -316,76 +368,222 @@ footer p {
 .contact-form {
     padding: 1rem;
     border: 1px solid #ccc;
-    border-radius: 8px
+    border-radius: 8px;
 }
 
 .map iframe {
     width: 100%;
     border: none;
     border-radius: 8px;
-    margin-top: 1rem
+    margin-top: 1rem;
 }
 
 .contact-form label {
     display: block;
     margin-top: 1rem;
-    font-weight: 600
+    font-weight: 600;
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: .6rem;
-    margin-top: .4rem;
+    padding: 0.6rem;
+    margin-top: 0.4rem;
     border: 1px solid #ccc;
     border-radius: 6px;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 .contact-form input[type="radio"],
 .contact-form input[type="checkbox"] {
     width: auto;
-    margin-right: .5rem
+    margin-right: 0.5rem;
 }
 
 .contact-form fieldset {
     margin-top: 1rem;
     padding: 1rem;
     border: 1px solid #ccc;
-    border-radius: 6px
+    border-radius: 6px;
 }
 
-/* ========== BUTTONS ========== */
+/* ========== BUTTON (global) ========== */
 .btn {
     margin-top: 1rem;
-    padding: .8rem 1rem;
+    padding: 0.8rem 1rem;
     cursor: pointer;
     border: none;
     border-radius: 8px;
     background: var(--accent1-color);
     color: #fff;
     font-weight: 700;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .btn:hover {
-    opacity: .92
+    opacity: 0.92;
 }
 
 /* ========== EMPLOYEES GRID ========== */
 .employee-grid {
     display: grid;
     gap: 1rem;
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr;
 }
 
-@media(min-width:700px) {
+@media (min-width: 700px) {
     .employee-grid {
-        grid-template-columns: repeat(3, 1fr)
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 .employee-grid img {
     width: 100%;
     height: auto;
-    border-radius: 8px
+    border-radius: 8px;
+}
+
+/* ========== SMALL TOUCHES ========= */
+figure img,
+.adventure-gallery img,
+.employee-grid img {
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+figure img:hover,
+.adventure-gallery img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* ====== TRIPS PAGE OVERRIDES (ensure roomy layout on trips.html) ====== */
+.trips-page {
+    max-width: 1400px;
+}
+
+.features .adventure-gallery {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.trip-card {
+    max-width: 1000px;
+}
+
+.trips-table table {
+    font-size: 1rem;
+}
+
+.call-to-action {
+    margin: 2rem auto;
+}
+
+@media (max-width: 900px) {
+    .features .adventure-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trips-page {
+        width: 95%;
+    }
+}
+
+/* ================= TRIPS PAGE POLISH ================= */
+
+/* hero banner spacing (optional helper classes used on trips.html) */
+.trips-hero {
+    margin-bottom: 1.5rem;
+}
+
+/* intro bar (if used) */
+.trips-intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.trips-intro img {
+    width: 110px;
+    border-radius: 6px;
+}
+
+/* featured trips row (polish) */
+.featured-trips .adventure-gallery {
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 1rem;
+}
+
+.featured-trips figure img {
+    height: 110px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* trip cards polish */
+.trip-card {
+    background: #f4f4f4;
+    padding: 1rem 1.2rem;
+    margin: 1.5rem auto;
+    border-radius: 8px;
+    border-left: 6px solid var(--accent1-color);
+    max-width: 900px;
+}
+
+.trip-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.trip-card ul {
+    margin: 0.6rem 0 1rem 1.2rem;
+}
+
+.trip-card .btn {
+    margin-top: 0.5rem;
+}
+
+/* trips table (polish) */
+.trips-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.trips-table th {
+    background: var(--accent1-color);
+    color: white;
+    padding: 0.6rem;
+}
+
+.trips-table td {
+    padding: 0.6rem;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* CTA section polish */
+.call-to-action {
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.call-to-action p {
+    margin: 0.7rem 0;
+}
+
+/* MOBILE adjustments for polish */
+@media (max-width: 900px) {
+    .featured-trips .adventure-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trips-intro {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .trip-card {
+        width: 95%;
+    }
 }
